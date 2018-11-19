@@ -1,11 +1,22 @@
 ; Example of a function that tests the function "+"
-(defun test-+ ()
+(deftest test-+ ()
   (check
     (= (+ 1 2) 3)
     (= (+ 1 2 3) 6)
     (= (+ -1 -3) -4)))
 
-(defun test-+-failing ()
+(deftest test-* ()
+  (check
+    (= (* 2 2) 4)
+    (= (* 3 5) 15)))
+
+(deftest test-arithmetic ()
+  (combine-results
+    (test-+)
+    (test-+-failing)
+    (test-*)))
+
+(deftest test-+-failing ()
   (check
     (= (+ 1 2) 3)
     (= (+ 1 2 3) 6)
